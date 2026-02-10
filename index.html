@@ -76,7 +76,7 @@
 
 <body>
 
-  <h1>랜덤 미션 뽑기</h1>
+  <h1>Merry-Me 엠티 개별미션 뽑기!🎲</h1>
 
   <button onclick="pickMission()">미션 뽑기</button>
 
@@ -96,16 +96,29 @@
       "강사님(쌤들)께 어깨 안마 해드리기"
     ];
     
-    function pickMission() {
+      function pickMission() {
     const result = document.getElementById("result");
 
-    result.innerText = "🎰 뽑는 중...";
+    let count = 0;
 
-    setTimeout(() => {
+    // 🎰 룰렛처럼 계속 바뀌는 효과
+    const rolling = setInterval(() => {
       const random =
         missions[Math.floor(Math.random() * missions.length)];
 
-      result.innerText = "✅ 오늘의 미션: " + random;
-    }, 2000);
+      result.innerText = "🎰 " + random;
+      count++;
+
+      // 15번 정도 돌리면 멈춤
+      if (count > 15) {
+        clearInterval(rolling);
+
+        // 마지막 확정 미션
+        const finalMission =
+          missions[Math.floor(Math.random() * missions.length)];
+
+        result.innerText = "✅ 오늘의 미션: " + finalMission;
+      }
+    }, 100); // 0.1초마다 바뀜
   }
 </script>
