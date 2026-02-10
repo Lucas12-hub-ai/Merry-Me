@@ -78,6 +78,7 @@
 
     /* 버튼 */
     button {
+      margin-top: 40px;
       font-size: 28px;
       font-weight: bold;
       padding: 18px 60px;
@@ -137,20 +138,28 @@
     ];
     
     function pickMission() {
-      const result = document.getElementById("result");
-      const card = document.getElementById("card");
+  const result = document.getElementById("result");
+  const card = document.getElementById("card");
 
-    // 결과 박스 숨기기 (처음엔 안 보이게)
-    result.style.display = "none";
+  let count = 0;
 
-      // 랜덤 미션 선택
+  // 룰렛처럼 미션 계속 바뀜
+  const rolling = setInterval(() => {
+    const random =
+      missions[Math.floor(Math.random() * missions.length)];
+
+    result.innerText = "🎰 " + random;
+    count++;
+
+    // 15번 정도 돌리면 멈춤
+    if (count > 15) {
+      clearInterval(rolling);
+
+      // 마지막 확정 미션
       const finalMission =
         missions[Math.floor(Math.random() * missions.length)];
 
-      // 결과 박스 보여주기
-      result.style.display = "block";
       result.innerText = "✅ 오늘의 미션: " + finalMission;
-
-    }, 2000); // 2초 동안 돌다가 멈춤
-  }
-</script>
+    }
+  }, 100);
+}
