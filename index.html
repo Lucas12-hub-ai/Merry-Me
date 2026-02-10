@@ -27,7 +27,7 @@
 
     /* 제목 */
     h1 {
-      font-size: 70px;
+      font-size: 100px;
       font-weight: 900;
 
       /* 글씨 그라데이션 */
@@ -84,18 +84,28 @@
 
   <script>
     const missions = [
-      "10초 동안 눈 감고 숨 고르기 🌿",
-      "친구에게 감사 메시지 보내기 💌",
-      "물 한 컵 마시기 💧",
-      "스트레칭 1분 하기 🧘",
-      "오늘의 미소 한 번 😊"
+      "조원에게 간식 자연스럽게 나눠주기",
+      "고기쌈 2명 이상 싸주기",
+      "5명 이상 상대방에게 따봉👍🏻 날리기",
+      "조원이 최소 2명 이상 나오도록 셀카 2번 이상 찍기",
+      "다른 조의 수강생 3명의 취미 물어보기 (이름-취미)",
+      "조원들의 MBTI 파악하기!",
+      "웃긴 포즈로 사진 한 장 찍기 (혼자든 단체든 상관 없음!)",
+      "3명 이상 있는 공간에서 '메리하자~' 5번 이상 외치기",
+      "3명 이상 있는 공간에서 스쿼트 5개 이상 하기",
+      "강사님(쌤들)께 어깨 안마 해드리기"
     ];
-
+    
     function pickMission() {
-      const random = Math.floor(Math.random() * missions.length);
-      document.getElementById("result").innerText = missions[random];
-    }
-  </script>
+    const result = document.getElementById("result");
 
-</body>
-</html>
+    result.innerText = "🎰 뽑는 중...";
+
+    setTimeout(() => {
+      const random =
+        missions[Math.floor(Math.random() * missions.length)];
+
+      result.innerText = "✅ 오늘의 미션: " + random;
+    }, 2000);
+  }
+</script>
