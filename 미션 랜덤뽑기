@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>랜덤 미션 뽑기</title>
+
+  <style>
+    /* 전체 배경 */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      font-family: "Noto Sans KR", sans-serif;
+
+      /* 감성 하늘 그라데이션 */
+      background: linear-gradient(
+        to bottom,
+        #a8d8ff,
+        #d6c8ff,
+        #ffe6f0
+      );
+    }
+
+    /* 제목 */
+    h1 {
+      font-size: 70px;
+      font-weight: 900;
+
+      /* 글씨 그라데이션 */
+      background: linear-gradient(to right, #7f7cff, #b57dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      margin-bottom: 50px;
+    }
+
+    /* 버튼 */
+    button {
+      font-size: 28px;
+      font-weight: bold;
+      padding: 18px 60px;
+      border: none;
+      border-radius: 40px;
+
+      /* 버튼 그라데이션 */
+      background: linear-gradient(to right, #6dd5ff, #c77dff);
+
+      color: white;
+      cursor: pointer;
+
+      /* 감성 그림자 */
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+
+      transition: 0.2s;
+    }
+
+    /* 버튼 호버 효과 */
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 15px 40px rgba(0,0,0,0.25);
+    }
+
+    /* 결과 출력 */
+    #result {
+      margin-top: 40px;
+      font-size: 32px;
+      font-weight: 600;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>랜덤 미션 뽑기</h1>
+
+  <button onclick="pickMission()">미션 뽑기</button>
+
+  <p id="result"></p>
+
+  <script>
+    const missions = [
+      "10초 동안 눈 감고 숨 고르기 🌿",
+      "친구에게 감사 메시지 보내기 💌",
+      "물 한 컵 마시기 💧",
+      "스트레칭 1분 하기 🧘",
+      "오늘의 미소 한 번 😊"
+    ];
+
+    function pickMission() {
+      const random = Math.floor(Math.random() * missions.length);
+      document.getElementById("result").innerText = missions[random];
+    }
+  </script>
+
+</body>
+</html>
