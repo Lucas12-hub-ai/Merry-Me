@@ -48,12 +48,9 @@
 
       background: rgba(255, 255, 255, 0.4);
       border-radius: 20px;
-
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 
-      display: inline-block;
       min-width: 320px;
-
       backdrop-filter: blur(8px);
 
       animation: pop 0.4s ease;
@@ -131,7 +128,7 @@
 
   <h1>Merry-Me 엠티<br>
     개별미션 뽑기!</h1>
-  <img id="card" src="카드.png" class="card-img">
+  <img id="card" src="카드.jpg" class="card-img">
   
   <button onclick="pickMission()">미션 뽑기</button>
 
@@ -154,32 +151,26 @@
     function pickMission() {
       const result = document.getElementById("result");
       const card = document.getElementById("card");
-        result.style.display = "block";
 
-      let count = 0;
+    // 결과 박스 숨기기 (처음엔 안 보이게)
+    result.style.display = "none";
 
+    // 카드 회전 시작
+    card.classList.add("rolling");
 
-       // 카드 회전 시작
-        card.classList.add("rolling");
-      
-    // 🎰 룰렛처럼 계속 바뀌는 효과
-    const rolling = setInterval(() => {
-      const random =
+    // 2초 후 카드 멈추고 미션 출력
+    setTimeout(() => {
+      // 카드 회전 멈춤
+      card.classList.remove("rolling");
+
+      // 랜덤 미션 선택
+      const finalMission =
         missions[Math.floor(Math.random() * missions.length)];
 
-      result.innerText = "🎰 " + random;
-      count++;
+      // 결과 박스 보여주기
+      result.style.display = "block";
+      result.innerText = "✅ 오늘의 미션: " + finalMission;
 
-      // 15번 정도 돌리면 멈춤
-      if (count > 15) {
-        clearInterval(rolling);
-
-        // 마지막 확정 미션
-        const finalMission =
-          missions[Math.floor(Math.random() * missions.length)];
-
-        result.innerText = "✅ 오늘의 미션: " + finalMission;
-      }
-    }, 100); // 0.1초마다 바뀜
+    }, 2000); // 2초 동안 돌다가 멈춤
   }
 </script>
