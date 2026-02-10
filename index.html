@@ -40,6 +40,7 @@
     }
 
     .card {
+      display: none;
       margin-top: 40px;
       padding: 25px 35px;
       font-size: 22px;
@@ -56,6 +57,26 @@
       backdrop-filter: blur(8px);
 
       animation: pop 0.4s ease;
+    }
+
+    .card-img {
+      width: 200px;
+      margin-top: 30px;
+      transition: transform 0.3s;
+    }
+
+    /* 카드 회전 애니메이션 */
+    .rolling {
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     /* 카드 뜨는 애니메이션 */
@@ -110,7 +131,8 @@
 
   <h1>Merry-Me 엠티<br>
     개별미션 뽑기!</h1>
-
+  <img id="card" src="카드.png" class="card-img">
+  
   <button onclick="pickMission()">미션 뽑기</button>
 
   <div id="result" class="card"></div>
@@ -129,11 +151,17 @@
       "강사님(쌤들)께 어깨 안마 해드리기"
     ];
     
-      function pickMission() {
-    const result = document.getElementById("result");
+    function pickMission() {
+      const result = document.getElementById("result");
+      const card = document.getElementById("card");
+        result.style.display = "block";
 
-    let count = 0;
+      let count = 0;
 
+
+       // 카드 회전 시작
+        card.classList.add("rolling");
+      
     // 🎰 룰렛처럼 계속 바뀌는 효과
     const rolling = setInterval(() => {
       const random =
