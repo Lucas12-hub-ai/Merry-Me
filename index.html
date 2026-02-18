@@ -140,8 +140,8 @@
       "[감사] 오늘 함께한 조원 1명에게 고맙다고 한마디 전하기",
       "[감사] MT 준비해주신 강사님과 쌤들께 감사의 표현 전하기",
       "[화합] 단체 게임에서 팀원 1명 이상 응원 멘트 해주기",
-      "[화합] 다른 사람과 자연스럽게 '하이파이브' 하기 (최소 10명 이상)"
-      "[화합] 실수하거나 게임에 진 사람에게 '괜찮아!', '잘했어' 라고 웃으며 말해주기",
+      "[화합] 다른 사람과 자연스럽게 '하이파이브' 하기 (최소 10명 이상)",
+      "[화합] 실수하거나 게임에 진 사람에게 '괜찮아!', '잘했어' 라고 웃으며 말해주기"
     ];
     
     function pickMission() {
@@ -175,7 +175,7 @@
       const finalMission =
         missions[Math.floor(Math.random() * missions.length)];
 
-      result.innerText = "🎯 당신의 개별 미션은? : " + finalMission;
+      result.innerText = "🎯" + finalMission;
 
       // 버튼 잠그기
       btn.disabled = true;
