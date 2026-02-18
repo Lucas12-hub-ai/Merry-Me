@@ -97,6 +97,20 @@
         box-shadow: none;
         opacity: 0.8;
     }
+
+    #titleText {
+      margin-top: 30px;
+      font-size: 38px;
+      font-weight: 800;
+      color: #444;
+      animation: shake 0.6s infinite alternate;
+    }
+
+    /* 살짝 흔들리는 효과*/
+    @keyframes shake {
+      0% { transform: translateX(-5px);}
+      100% { transform: translateX(5px);}
+    }
     
     /* 결과 출력 */
     #result {
@@ -116,8 +130,9 @@
   
   <button id="pickBtn" onclick="pickMission()">미션 뽑기</button>
 
-  <div id="result" class="card">
-    <p id="titleText"></p>
+  <p id="titleText" style="display:none;"></p>
+  
+  <div id="result" class="card" style="display:none;">
     <p id="missionText"></p>
   </div>
 
@@ -146,18 +161,18 @@
     ];
     
     function pickMission() {
-      const result = document.getElementById("result");
       const titleText = document.getElementById("titleText");
       const missionText = document.getElementById("missionText");
-      const card = document.getElementById("card");
+      const result = document.getElementById("result");
       const btn = document.getElementById("pickBtn");
-      
-      //결과창 보이게 
-      result.style.display = "block";
 
-      // 고정 멘트 먼저 띄우기
+      // 제목 멘트 보여주기
+      titleText.style.display = "block";
       titleText.innerText = "🎯 당신의 미션은?!";
       
+      // 결과창 보이게 
+      result.style.display = "block";
+
     let count = 0;
 
   // 룰렛처럼 미션 계속 바뀜
@@ -165,7 +180,7 @@
     const random =
       missions[Math.floor(Math.random() * missions.length)];
 
-    result.innerText = "🎰 " + random;
+    missionText.innerText = "🎰 " + random;
     count++;
 
     // 15번 정도 돌리면 멈춤
@@ -176,7 +191,7 @@
       const finalMission =
         missions[Math.floor(Math.random() * missions.length)];
 
-      result.innerText = "🎯" + finalMission;
+      missionText.innerText = "✅" + finalMission;
 
       // 버튼 잠그기
       btn.disabled = true;
