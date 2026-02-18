@@ -81,7 +81,6 @@
 
       /* 감성 그림자 */
       box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
-
       transition: 0.2s;
     }
 
@@ -97,17 +96,24 @@
       font-size: 32px;
       font-weight: 600;
       color: #333;
+
+      button:disabled {
+        background: linear-gradient(to right, #d3d3d3, #b0b0b0);
+        color: #666;
+        cursor: not-allowed;
+        box-shadow: none;
+        opacity: 0.8;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <h1>Merry-Me 엠티<br>
     개별미션 뽑기!</h1>
   <img id="card" src="카드.jpg" class="card-img">
   
-  <button onclick="pickMission()">미션 뽑기</button>
+  <button id="pickBtn" onclick="pickMission()">미션 뽑기</button>
 
   <div id="result" class="card"></div>
 
@@ -127,8 +133,12 @@
     
     function pickMission() {
       const result = document.getElementById("result");
+      const btn = document.getElementbyId("pickBtn";
 
     let count = 0;
+
+      //결과창 보이게 
+      result.style.display = "block";
 
   // 룰렛처럼 미션 계속 바뀜
   const rolling = setInterval(() => {
@@ -146,7 +156,11 @@
       const finalMission =
         missions[Math.floor(Math.random() * missions.length)];
 
-      result.innerText = "✅ 오늘의 미션: " + finalMission;
+      result.innerText = "🎯 당신의 개별 미션은? : " + finalMission;
+
+      // 버튼 잠그기
+      btn.disabled = true;
+      btn.innerText = "🎉 뽑기 완료!";
     }
   }, 100);
 }
